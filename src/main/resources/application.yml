@@ -1,0 +1,26 @@
+# Service will be mapped under the /api URI
+zuul:
+ prefix: /api
+# Uncomment to disable auto-registering all services read from Eureka
+ ignoredServices: '*'
+ routes:
+  test:
+   path: /redirect
+   url: http://google.com
+  member-service:
+   path: /member-service/**
+   serviceId: member-service
+  claim-service:
+   path: /claim-service/**
+   serviceId: claim-service
+  policy-service:
+   path: /policy-service/**
+   serviceId: policy-service
+
+
+#LocalCountry1:
+# path: /client1/**
+# serviceId: LocalCountry1
+#LocalCountry2:
+# path: /client2/**
+#serviceId: LocalCountry2
