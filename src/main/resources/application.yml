@@ -7,15 +7,10 @@ zuul:
   test:
    path: /redirect
    url: http://google.com
-  member-service:
-   path: /member-service/**
-   serviceId: member-service
-  claim-service:
-   path: /claim-service/**
-   serviceId: claim-service
-  policy-service:
-   path: /policy-service/**
-   serviceId: policy-service
+  AuditCheckList:
+   path: /AuditCheckList/**
+   serviceId: AuditCheckList
+
 
 
 #LocalCountry1:
