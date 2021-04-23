@@ -41,9 +41,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
+		
+		String headerParam  =   request.getHeaders("Authorization").nextElement();
+//		response.setHeader("Authorization", headerParam);
+	    log.info("---------header in zuul---------");
+        log.info("headerParam: "+headerParam);
+		
 		log.info("Validating Token!!!!!");
 		try {
 			String jwt = getJwtFromRequest(request);
+			log.info("----------Recieved jwt--------");
+			log.info(jwt);
 			if (StringUtils.hasText(jwt) && validateToken(jwt)) {
 				log.info("Token is Valid ");
 				String userNameFromToken = getUserNameFromToken(jwt);

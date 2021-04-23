@@ -10,6 +10,12 @@ zuul:
   AuditCheckList:
    path: /AuditCheckList/**
    serviceId: AuditCheckList
+  AuditBenchMark:
+   path: /AuditBenchMark/**
+   serviceId: AuditBenchMark
+  AuditSeverity:
+   path: /AuditSeverity/**
+   serviceId: AuditSeverity
 
 
 
