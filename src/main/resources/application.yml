@@ -16,6 +16,9 @@ zuul:
   AuditSeverity:
    path: /AuditSeverity/**
    serviceId: AuditSeverity
+  AuditAuthentication:
+   path: /AuditAuthentication/**
+   serviceId: AuditAuthentication
 
 
 

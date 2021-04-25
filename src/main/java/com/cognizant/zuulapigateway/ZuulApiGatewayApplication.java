@@ -24,10 +24,14 @@ public class ZuulApiGatewayApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		User niraj = new User("niraj", "$2y$12$B6I4IDz/WUqRn/9EWJPFFulwmNe6qC.ijNTR6VWSvV.C5yvTzbGXC", "ROLE_ADMIN");
+		User naveen = new User("Naveen", "$2y$12$B6I4IDz/WUqRn/9EWJPFFulwmNe6qC.ijNTR6VWSvV.C5yvTzbGXC", "ROLE_ADMIN");
+		User archana = new User("Archana", "$2y$12$B6I4IDz/WUqRn/9EWJPFFulwmNe6qC.ijNTR6VWSvV.C5yvTzbGXC", "ROLE_ADMIN");
+		User meera = new User("Meera", "$2y$12$B6I4IDz/WUqRn/9EWJPFFulwmNe6qC.ijNTR6VWSvV.C5yvTzbGXC", "ROLE_ADMIN");
 		User test = new User("test", "$2y$12$B6I4IDz/WUqRn/9EWJPFFulwmNe6qC.ijNTR6VWSvV.C5yvTzbGXC", "ROLE_USER");
-		userRepository.save(niraj);
-		userRepository.save(test);		
+		userRepository.save(archana);
+		userRepository.save(naveen);
+		userRepository.save(meera);
+		userRepository.save(test);			
 	}
 
 }

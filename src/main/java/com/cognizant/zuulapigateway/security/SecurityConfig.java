@@ -1,8 +1,11 @@
 package com.cognizant.zuulapigateway.security;
 
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.RegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -15,10 +18,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //	@Autowired
 //	private UserAuthDetailsService userAuthDetailsService;
-//
+
 //	@Autowired
 //	private InvalidLoginAttemptHandler invalidLoginAttemptHandler;
-//
+
 //	@Override
 //	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 //		authenticationManagerBuilder.userDetailsService(userAuthDetailsService).passwordEncoder(passwordEncoder());
@@ -42,10 +45,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 //		.exceptionHandling().authenticationEntryPoint(invalidLoginAttemptHandler)
 //				.and()
-				.authorizeRequests().antMatchers("/AuditAuthentication/**").permitAll()
-				.antMatchers("/h2-console/**").permitAll()
+				.authorizeRequests().antMatchers("/api/AuditAuthentication/**").permitAll()
+				.antMatchers("/api/AuditCheckList/**").permitAll()
 				.anyRequest().authenticated();
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+	    web.ignoring().antMatchers("/api/AuditAuthentication/**")
+	    .antMatchers("/api/AuditCheckList/**");
+	}
+	
+	@Bean
+	public RegistrationBean jwtAuthFilterRegister(JwtAuthenticationFilter filter) {
+	    FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);
+	    registrationBean.setEnabled(false);
+	    return registrationBean;
 	}
 
 	@Bean
