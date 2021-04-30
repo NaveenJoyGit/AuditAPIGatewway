@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		.exceptionHandling().authenticationEntryPoint(invalidLoginAttemptHandler)
 //				.and()
 				.authorizeRequests().antMatchers("/api/AuditAuthentication/**").permitAll()
-				.antMatchers("/api/AuditCheckList/**").permitAll()
+//				.antMatchers("/api/AuditCheckList/**").permitAll()
 				.anyRequest().authenticated();
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
